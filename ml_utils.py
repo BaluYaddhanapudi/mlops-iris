@@ -7,9 +7,9 @@ from sklearn.linear_model import LogisticRegression
 
 # define a Gaussain NB classifier
 #clf = GaussianNB()
-#clf = KNeighborsClassifier(n_neighbors=5)     
+clf = KNeighborsClassifier(n_neighbors=5)     
 # KNN classifier gave an accuracy of 93.3% and Logistic Regression giving accuracy of 96.7%
-clf = LogisticRegression(penalty='l2',C=1.0, max_iter=10000)
+#clf = LogisticRegression(penalty='l2',C=1.0, max_iter=10000)
 
 # define the class encodings and reverse encodings
 classes = {0: "Iris Setosa", 1: "Iris Versicolour", 2: "Iris Virginica"}
