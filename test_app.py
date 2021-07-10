@@ -25,7 +25,7 @@ def test_pred_virginica():
         assert response.status_code == 200
         assert response.json() == {"flower_class": "Iris Virginica"}
 
-'''
+
 # test to check if Iris Setosa is classified correctly
 def test_pred_setosa():
     # defining a sample payload for the testcase
@@ -57,4 +57,3 @@ def test_pred_versi():
         # asserting the correct response is received
         assert response.status_code == 200
         assert response.json() == {"flower_class": "Iris Versicolour"}
-'''
