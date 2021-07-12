@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from ml_utils import load_model, predict, retrain
 from typing import List
+from datetime import datetime
 
 # defining the main app
 app = FastAPI(title="Iris Predictor", docs_url="/")
@@ -22,6 +23,7 @@ class QueryIn(BaseModel):
 # class which is returned in the response
 class QueryOut(BaseModel):
     flower_class: str
+    #c_timestamp: datetime
 
 # class which is expected in the payload while re-training
 class FeedbackIn(BaseModel):
@@ -43,6 +45,7 @@ def ping():
 # Payload: QueryIn containing the parameters
 # Response: QueryOut containing the flower_class predicted (200)
 def predict_flower(query_data: QueryIn):
+    #output = {"flower_class": predict(query_data), "c_timestamp":(datetime.datetime.now().timestamp())}
     output = {"flower_class": predict(query_data)}
     return output
 
@@ -58,4 +61,4 @@ def feedback_loop(data: List[FeedbackIn]):
 # Main function to start the app when main.py is called
 if __name__ == "__main__":
     # Uvicorn is used to run the server and listen for incoming API requests on 0.0.0.0:8888
-    uvicorn.run("main:app", host="0.0.0.0", port=8888, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=5000, reload=True)
